@@ -31,6 +31,11 @@ nav {
   margin: 0;
 }
 
+.navigationHidden {
+  visibility: hidden;
+
+}
+
 .navigation > li {
   text-transform: uppercase;
   padding: 16px;
@@ -90,18 +95,20 @@ nav .navigation {
   justify-content: flex-end;
 }
 
-nav .icon {
+nav .iconNavbar {
   display: flex;
   align-items: center;
   position: absolute;
   top:0;
   right: 24px;
   height: 100%;
-
 }
 
+.iconNavbarHidden {
+  display: none;
+}
 
-nav .icon svg {
+nav .iconNavbar svg {
   cursor: pointer;
   font-size: 24px;
   transition: 0.8s ease all;
@@ -123,6 +130,7 @@ nav .icon svg {
   top: 0;
   left: 0px;
 }
+
 
 .dropdown-nav li {
   margin-left:0;

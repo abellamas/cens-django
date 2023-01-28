@@ -3,30 +3,30 @@
 
     <nav>
       <div class="branding">
-        <a href="/">
+        <a href="{% url 'home' %}">
           <img src="{% static 'img/logo.png' %}" alt="CENS 451">
           <p class="name_branding">CENS 451</p>
         </a>
       </div>
 
-      <ul class="navigation">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="fines/">Plan Fines</a></li>
-        <li><a href="docentes/">Docentes</a></li>
+      <ul id="navId" class="navigation">
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'fines' %}">Plan Fines</a></li>
+        <li><a href="{% url 'docentes' %}">Docentes</a></li>
       </ul>
 
+      <div id="iconNavId" class="iconNavbar">
+          <i  class="fa-solid fa-bars" ></i>
+      </div>
 
-{#      <div class="icon" @click="hrefggleMenuMobile" v-show="mobile" :class="{'icon-active': menuMobile}">#}
-{#        <i  class="fa-solid fa-bars" ></i>#}
-{#      </div>#}
 
-{#      <transition name="mobile-nav">#}
-{#        <ul class="dropdown-nav">#}
-{#          <li><a class="link" href="/">Inicio</a></li>#}
-{#          <li><a class="link" href="/fines">Plan Fines</a></li>#}
-{#          <li><a class="link" href="/docentes">Docentes</a></li>#}
-{#        </ul>#}
-{#      </transition>#}
+      <div>
+        <ul id="mobileNavId" class="dropdown-nav mobile-nav-leave-active mobile-nav-leave-to" >
+          <li><a class="link" href="{% url 'home' %}">Inicio</a></li>
+          <li><a class="link" href="{% url 'fines' %}">Plan Fines</a></li>
+          <li><a class="link" href="{% url 'docentes' %}">Docentes</a></li>
+        </ul>
+      </div>
 
     </nav>
   </header>
