@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
  <title>CENS 451 | Fines </title>
 {% endblock %}
 
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
 {% block main %}
-<h1> Hola </h1>
+    <a href="{% url 'inscription' %}">Inscripciones</a>
 {% endblock %}

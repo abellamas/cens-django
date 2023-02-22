@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>Inscripción FINES </title>
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/form_inscription.css' %}">
+{% endblock %}
+
+{% block main %}
+
+    {% if submitted %}
+        <h3>Inscripción realizada!</h3>
+    {% else %}
+{#        <div>#}
+{#            <form class="container-fluid needs-validation"#}
+{#                  method="POST"#}
+{#                  name="google-sheet"#}
+{#                  novalidate=""#}
+{#            >#}
+{#                <div class="row">#}
+{#                    <div class="col-md-6 d-flex flex-column justify-content-between">#}
+{#                        {% csrf_token %}#}
+{#                        {{ form.name.label }}#}
+{#                        {{ form.name }}#}
+{#                    </div>#}
+{#                </div>#}
+{#                    <input type="submit" value="Enviar" class="btn btn-secondary">#}
+{#            </form>#}
+{#        </div>#}
+
+        <div class="desplacement-down">
+            <section class="container pt-4 bg-light border border-1 rounded">
+                <h1 class="text-center">Preinscripción Plan Fines 1° cuatrimestre 2023</h1>
+                <div class="d-flex justify-content-center ">
+                    <p class="w-75 bg-success px-4 py-2 text-white rounded">
+                        Una vez que completes el formulario, te llegará un mail de confirmación con los datos que completaste.
+                        Para finalizar la inscripción deberás presentarte en el CENS 451 los días lunes y miércoles de 18:30 a 20:30
+                        con la documentación requerida, para así validar los datos informados.
+                        Por favor lee atentamente al momento de completar el formulario.
+                    </p>
+                </div>
+
+
+                <form class="container-fluid needs-validation"
+                      method="POST"
+                      name="google-sheet"
+                      novalidate=""
+                >
+                    <div class="row">
+                        <div class="col-md-6 d-flex flex-column justify-content-between">
+                            <h3 class="mb-3 fs-4">Datos personales</h3>
+                                {% for field in form %}
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">{{ field.label }}</span>
+                                        {{ field }}
+                                    </div>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}
