@@ -1,12 +1,12 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Inscription
+from . import models
 
 
 class InscriptionForm(ModelForm):
 
 	class Meta:
-		model = Inscription
+		model = models.Student
 		fields = "__all__"
 		widgets = {
 			'name': forms.TextInput(attrs={'class': 'form-control', 'autocapitalize': 'characters'}),
