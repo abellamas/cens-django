@@ -81,7 +81,7 @@ class Person(models.Model):
 		('M', 'Masculino'),
 		('X', 'No Binario')
 	]
-	id_dni = models.IntegerField(primary_key=True, validators=[MinValueValidator(0), MaxValueValidator(99999999)],
+	dni = models.IntegerField(primary_key=True, validators=[MinValueValidator(0), MaxValueValidator(99999999)],
 								verbose_name="DNI")
 	name = models.CharField(max_length=50, blank=False, verbose_name="Nombre/s")
 	last_name = models.CharField(max_length=50, blank=False, verbose_name="Apellido/s")
