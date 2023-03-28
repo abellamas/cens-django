@@ -77,20 +77,20 @@ class Person(models.Model):
 		('OTRO','Otro')
 	]
 	GENDER_CHOICES = [
-		('Femenino','Femenino'),
-		('Masculino', 'Masculino'),
-		('No Binario', 'No Binario')
+		('F','Femenino'),
+		('M', 'Masculino'),
+		('X', 'No Binario')
 	]
-	id = models.IntegerField(primary_key=True, validators=[MinValueValidator(0), MaxValueValidator(99999999)],
+	id_dni = models.IntegerField(primary_key=True, validators=[MinValueValidator(0), MaxValueValidator(99999999)],
 								verbose_name="DNI")
-	name = models.CharField(max_length=40, blank=False, verbose_name="Nombre/s")
-	last_name = models.CharField(max_length=40, blank=False, verbose_name="Apellido/s")
+	name = models.CharField(max_length=50, blank=False, verbose_name="Nombre/s")
+	last_name = models.CharField(max_length=50, blank=False, verbose_name="Apellido/s")
 	birthday = models.DateField(verbose_name="Fecha de nacimiento", blank=False)
-	gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True, null=False, verbose_name="Género")
+	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=False, verbose_name="Género")
 	nationality = models.CharField(max_length=12, choices=COUNTRY_CHOICES, blank=True, null=False,
 								   verbose_name="Nacionalidad")
 	email = models.EmailField(max_length=254, blank=False, verbose_name="Correo electrónico")
-	cellphone = models.CharField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], verbose_name="Celular")
+	cellphone = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(9999999999)], verbose_name="Celular")
 
 	class Meta:
 		abstract = True
@@ -169,13 +169,15 @@ class Student(Person):
 		('TV', 'Turno Vespertino/Noche 18 hs a 22 hs aprox.')
 	]
 
-	created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha Inscripción")
+	# FOREING KEY
 	commission = models.ManyToManyField(Commission)
-	place_birdth = models.CharField(max_length=30, verbose_name="Lugar de Nacimiento", blank=False)
-	address = models.CharField(max_length=50, blank=True, verbose_name="Domicilio")
+	# another fields
+	created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha Inscripción")
+	place_birdth = models.CharField(max_length=100, verbose_name="Lugar de Nacimiento", blank=False)
+	address = models.CharField(max_length=100, blank=True, verbose_name="Domicilio")
 	neighborhood = models.CharField(max_length=30, blank=False, choices=NEIGHBORHOOD_CHOICES, verbose_name="Localidad/Barrio")
 	cellphone_2 = models.CharField(max_length=10, blank=True, null=False, verbose_name="Celular 2")
-	old_studies = models.CharField(max_length=20, choices=OLD_STUDIES_CHOICES, verbose_name="Estudios Previos")
+	level_studies = models.CharField(max_length=20, choices=OLD_STUDIES_CHOICES, verbose_name="Estudios Previos")
 	subjets_owed = models.TextField(verbose_name="Materias Adeudadas", blank=True)
 	college = models.CharField(max_length=50, verbose_name="Colegio")
 	college_country = models.CharField(max_length=12, choices=Person.COUNTRY_CHOICES, verbose_name="País del colegio")
